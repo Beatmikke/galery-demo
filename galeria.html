@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Galería de Fotos</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .galeria-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+        padding: 40px 0;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .galeria-grid img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      }
+      .galeria-grid img:hover {
+        transform: scale(1.06);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      }
+      .modal-imagen {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.8);
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-imagen.activo {
+        display: flex;
+      }
+      .modal-contenido {
+        max-width: 90vw;
+        max-height: 90vh;
+        border-radius: 10px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      }
+      .cerrar-modal {
+        position: absolute;
+        top: 30px;
+        right: 50px;
+        color: #fff;
+        font-size: 3em;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1001;
+      }
+    </style>
+</head>
+<body>
+    <header>
+      <div class="header-content">
+        <img src="imagenes/galeria.png" alt="Logo Galería" class="logo-header">
+        <nav>
+      <a href="index.html">Inicio</a>
+      <a href="galeria.html">Galería</a>
+      <a href="contacto.html">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <h2 style="text-align:center; margin-top:30px;">Galería de Fotos</h2>
+      <div class="galeria-grid">
+        <img src="imagenes/fondo1.webp" alt="Foto 1" onclick="abrirModalImagen(this.src)">
+        <img src="imagenes/2.webp" alt="Foto 2" onclick="abrirModalImagen(this.src)">
+        <img src="imagenes/3.webp" alt="Foto 3" onclick="abrirModalImagen(this.src)">
+        <img src="imagenes/4.jfif" alt="Foto 4" onclick="abrirModalImagen(this.src)">
+        <img src="imagenes/5.jfif" alt="Foto 5" onclick="abrirModalImagen(this.src)">
+        <img src="imagenes/6.jfif" alt="Foto 6" onclick="abrirModalImagen(this.src)">
+        <img src="imagenes/7.jfif" alt="Foto 7" onclick="abrirModalImagen(this.src)">
+        <img src="imagenes/8.jfif" alt="Foto 8" onclick="abrirModalImagen(this.src)">
+        <img src="imagenes/9.jfif" alt="Foto 9" onclick="abrirModalImagen(this.src)">
+        <img src="imagenes/10.jfif" alt="Foto 10" onclick="abrirModalImagen(this.src)">
+        <!-- Agrega más imágenes aquí -->
+      </div>
+
+      <div id="modal-imagen" class="modal-imagen">
+        <span class="cerrar-modal" onclick="cerrarModalImagen()">&times;</span>
+        <img class="modal-contenido" id="img-modal-grande">
+      </div>
+    </main>
+
+    <footer>
+        &copy; 2025 Galería Demo. Todos los derechos reservados.
+    </footer>
+
+    <script>
+      // Abrir modal al hacer clic en una miniatura
+      document.querySelectorAll('.galeria-grid img').forEach(img => {
+        img.addEventListener('click', function() {
+          document.getElementById('img-modal-grande').src = this.src;
+          document.getElementById('modal-imagen').classList.add('activo');
+        });
+      });
+
+      // Cerrar modal con la X
+      function cerrarModalImagen() {
+        document.getElementById('modal-imagen').classList.remove('activo');
+      }
+
+      // Cerrar modal al hacer clic fuera de la imagen
+      document.getElementById('modal-imagen').addEventListener('click', function(e) {
+        if (e.target === this) cerrarModalImagen();
+      });
+    </script>
+</body>
+</html>
