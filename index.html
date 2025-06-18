@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Galería Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+  <div class="header-content">
+    <img src="imagenes/galeria.png" alt="Logo Galería" class="logo-header">
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="galeria.html">Galería</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+    <main>
+        <!-- Carrusel de fotos -->
+        <div class="carrusel">
+          <button class="carrusel-btn" onclick="cambiarCarrusel(-1)">&#8592;</button>
+          <img id="carrusel-img" src="imagenes/fondo1.webp" alt="Carrusel">
+          <button class="carrusel-btn" onclick="cambiarCarrusel(1)">&#8594;</button>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2025 Galería Demo. Todos los derechos reservados.
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
